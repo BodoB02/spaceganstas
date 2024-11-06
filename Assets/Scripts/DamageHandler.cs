@@ -6,7 +6,6 @@ using UnityEngine.UI;
 // Sebzés kezelését végző osztály
 public class DamageHandler : MonoBehaviour
 {
-
     // Az objektum életereje
     public int health = 2;
 
@@ -16,6 +15,9 @@ public class DamageHandler : MonoBehaviour
     // Az eredeti réteg, amin az objektum található
     int correctLayer;
 
+    // A HP csíkhoz tartozó UI Image komponens
+    public Image healthBar;
+
     // A Start metódus meghívásakor történik meg a szükséges inicializálás
     void Start()
     {
@@ -24,6 +26,9 @@ public class DamageHandler : MonoBehaviour
 
         // A maximális életerő beállítása a kezdeti életerő értékére
         maxHealth = health;
+
+        // A HP csík frissítése
+        UpdateHealthBar();
     }
 
     // Amikor az objektum ütközik valamivel, ez a metódus hívódik meg
@@ -31,6 +36,9 @@ public class DamageHandler : MonoBehaviour
     {
         // Csökkentjük az életerőt
         health--;
+
+        // Frissítjük a HP csíkot
+        UpdateHealthBar();
     }
 
     // Az Update metódus minden frame-ben meghívódik
@@ -51,4 +59,15 @@ public class DamageHandler : MonoBehaviour
     }
 
     // A HP csík frissítése a jelenlegi életerő alapján
+    void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            // A HP százalékos értékének kiszámítása
+            float healthPercent = (float)health / maxHealth;
+
+            // A HP csík szélességének módosítása a százalék alapján
+            healthBar.fillAmount = healthPercent;
+        }
+    }
 }

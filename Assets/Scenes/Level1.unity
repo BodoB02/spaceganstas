@@ -883,6 +883,9 @@ GameObject:
   - component: {fileID: 1363739411}
   - component: {fileID: 1363739410}
   - component: {fileID: 1363739409}
+  - component: {fileID: 1363739414}
+  - component: {fileID: 1363739415}
+  - component: {fileID: 1363739416}
   m_Layer: 9
   m_Name: EnemyType1
   m_TagString: Untagged
@@ -1056,6 +1059,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363739414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363739408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e06e71b804fafb46af5faf484c92f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeed: 120
+--- !u!114 &1363739415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363739408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c317957b32de04795e63d9edaa5412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+--- !u!114 &1363739416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363739408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3302c36808dd148a6f88b5108ea1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 0, y: 0.5, z: 0}
+  bulletPrefab: {fileID: 4891718012495118759, guid: 47c30963a53cbe347955e2cb4f1db111, type: 3}
+  fireDelay: 0.5
 --- !u!1 &1776054557
 GameObject:
   m_ObjectHideFlags: 0

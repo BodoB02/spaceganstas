@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 0.7, z: 0}
-  bulletPrefab: {fileID: 7724741194525888072, guid: 3c606cf4be8c47945b6c3ca60ca275b9, type: 3}
+  bulletPrefab: {fileID: 2692616970570889414, guid: 277207d05fb2c0a40929be10e33f210d, type: 3}
   fireDelay: 0.25
 --- !u!1 &564088734
 GameObject:

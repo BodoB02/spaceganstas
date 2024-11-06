@@ -14,7 +14,11 @@ GameObject:
   - component: {fileID: 5928549710132054428}
   - component: {fileID: 8076551802534141286}
   - component: {fileID: 5851682216626019371}
+<<<<<<< HEAD
   - component: {fileID: 7306047113523820938}
+=======
+  - component: {fileID: -3171376665921441302}
+>>>>>>> BulletDestucts
   m_Layer: 10
   m_Name: Laser
   m_TagString: Untagged
@@ -197,7 +201,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
+<<<<<<< HEAD
 --- !u!114 &7306047113523820938
+=======
+--- !u!114 &-3171376665921441302
+>>>>>>> BulletDestucts
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,7 +214,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7724741194525888072}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 29a80d4bba51def4bb03fbc883704e49, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: 560009126c34f614499fc6eee0776833, type: 3}
+>>>>>>> BulletDestucts
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2

@@ -23,7 +23,7 @@ public class GamerTimer : MonoBehaviour
     void Awake()
     {
         // Ha az aktuális jelenet az "EndScene" vagy a "MainMenuScene", akkor megsemmisítjük az időmérő objektumot
-        if (SceneManager.GetActiveScene().name == "EndScene" || SceneManager.GetActiveScene().name == "MainMenuScene")
+        if (SceneManager.GetActiveScene().name == "EndScene" || SceneManager.GetActiveScene().name == "MainMenu")
         {
             Destroy(gameObject); // Ezzel leállítod a számlást, amikor az EndScene vagy MainMenu jelenet van betöltve
         }
@@ -46,7 +46,7 @@ public class GamerTimer : MonoBehaviour
     // Minden frame-ben meghívódó metódus, amely frissíti az eltelt időt
     void Update()
     {
-        if (!(SceneManager.GetActiveScene().name == "EndScene" || SceneManager.GetActiveScene().name == "MainMenuScene"))
+        if (!(SceneManager.GetActiveScene().name == "EndScene" || SceneManager.GetActiveScene().name == "MainMenu"))
         {
             if (player == null)
             {
@@ -68,14 +68,13 @@ public class GamerTimer : MonoBehaviour
         }
 
         // Ha az aktuális jelenet az "EndScene", akkor mentjük a high score-t és megsemmisítjük az időmérő objektumot
-        if (SceneManager.GetActiveScene().name == "EndScene" || SceneManager.GetActiveScene().name == "MainMenuScene")
+        if (SceneManager.GetActiveScene().name == "EndScene" || SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "HighScoreMenu")
         {
-            SaveHighScore();
             Destroy(gameObject); // Az időmérő elpusztítása az EndScene jelenetben
-        }
-        if (SceneManager.GetActiveScene().name == "EndScene")
-        {
-            SaveHighScore();
+            if (SceneManager.GetActiveScene().name == "EndScene")
+            {
+                SaveHighScore();
+            }
         }
 
         // Ha a játék fut, növeljük az eltelt időt

@@ -68,7 +68,7 @@ public class PauseMenuHandler : MonoBehaviour
     {
         // Az idő visszaállítása az alapállapotra
         Time.timeScale = 1f;
-
+        Debug.Log("GoToMainMenu called");
         // Jelenet váltása a főmenüre
         SceneManager.LoadScene("MainMenu");
     }

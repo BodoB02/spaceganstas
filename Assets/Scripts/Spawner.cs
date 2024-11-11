@@ -131,4 +131,12 @@ public class Spawner : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 1.5f); // Megnöveltük a sugár méretét 1.5-re a megfelelő távolság érdekében
         return colliders.Length > 0;
     }
+    public int RemainingItems()
+    {
+        return GameObject.FindGameObjectsWithTag("Item").Length;
+    }
+    public int RemainingEnemies()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy").Length;
+    }
 }

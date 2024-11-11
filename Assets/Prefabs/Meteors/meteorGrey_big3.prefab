@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3819940457863443494}
   - component: {fileID: 7831376187961705688}
   - component: {fileID: 9162100758303908375}
+  - component: {fileID: 7611078117552564689}
   m_Layer: 8
   m_Name: meteorGrey_big3
   m_TagString: Meteor
@@ -186,3 +187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 50
   clockwise: 0
+--- !u!114 &7611078117552564689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305267388359002719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560955c6d17a3744282576f5c1243657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invulnPeriod: 0
+  health: 4
+  healthBar: {fileID: 0}

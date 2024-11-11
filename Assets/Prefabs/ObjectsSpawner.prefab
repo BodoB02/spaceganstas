@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &913093342084971558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6263838025370338053}
+  - component: {fileID: 7177619701817858510}
+  m_Layer: 0
+  m_Name: ObjectsSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6263838025370338053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913093342084971558}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4591954, y: -2.7321923, z: -2.362794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7177619701817858510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913093342084971558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0b225ecc397004a9cd4bc4579b1bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 2571391652094559376, guid: d51bfb1f17621ac4092d23384bf4cd72, type: 3}
+  - {fileID: 6757116411171336445, guid: 7e1eaefbfd16da1448be2221fee2b0ae, type: 3}
+  meteorPrefabs:
+  - {fileID: 2856601934562979793, guid: ff126baa822a9e34189af1d4a8675fc9, type: 3}
+  - {fileID: 6955637130810889053, guid: 54d90cf562d71844897b7f27adc6478b, type: 3}
+  - {fileID: 3227965746513685443, guid: 88a3c0d6db3d01843af5627566b9e6bf, type: 3}
+  - {fileID: 3073114328968273899, guid: e9cfa0163ac886a4ba46788e5ee911b8, type: 3}
+  - {fileID: 5439508859761183525, guid: 3a3dd80bcd93c8940b39c2c4b4c41560, type: 3}
+  - {fileID: 2754512183014183982, guid: dfe68cf29c665f0449c7913006632fd4, type: 3}
+  - {fileID: 475273343050264747, guid: 608d7de518736f543b0d4c5f54067638, type: 3}
+  - {fileID: 2587378957447109725, guid: 94758b33b4c6252449731f038a2caefd, type: 3}
+  - {fileID: 3566348117128561939, guid: d717369c36e378a448542873ef8c997e, type: 3}
+  - {fileID: 2436207327537572451, guid: 79eb21b24d8db434ea93176b798002ff, type: 3}
+  - {fileID: 1305267388359002719, guid: 6d0e4d711602c4c45adb188ad7f5b3b1, type: 3}
+  - {fileID: 8280627692243201550, guid: 486ac7406767e2f4c921add72ebbee7e, type: 3}
+  - {fileID: 189602704391679550, guid: 4ebaff958ef4c48439b690e019bb4d21, type: 3}
+  - {fileID: 3340834529292643531, guid: c3f010973d526c148a8fb235bbada772, type: 3}
+  - {fileID: 8133382487395029895, guid: 91ee53aba0189744c82ddc2ac1dca8a9, type: 3}
+  - {fileID: 7040748761763499702, guid: 4fd71c4e9084892488e299726f7e7050, type: 3}
+  - {fileID: 8754437883857614990, guid: 7e9587ded6489534da51276fc745cf18, type: 3}
+  - {fileID: 8331994351131618769, guid: 9cadae7a7d0542f4193b06775bf5d599, type: 3}
+  powerupPrefabs:
+  - {fileID: 37998924516942212, guid: e2e338d7b7df2bc4eb459aed6179f70e, type: 3}
+  itemPrefabs:
+  - {fileID: 7590175661452247093, guid: 405e23060da7ad849947b2d1573d7f6b, type: 3}
+  - {fileID: 3983279733601087092, guid: d3b33863e1c40c54b8a7bd0c1c1ea2ee, type: 3}
+  - {fileID: 988802161534412498, guid: 50114af46078ffe4792b8e8e867865b0, type: 3}
+  meteorCounts: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  enemyCounts: 0000000002000000
+  itemCount: 010000000100000001000000
+  powerupCount: 3
+  mapBoundaryObject: {fileID: 0}

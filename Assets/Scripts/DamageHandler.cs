@@ -35,6 +35,8 @@ public class DamageHandler : MonoBehaviour
 
         // A HP csík frissítése
         UpdateHealthBar();
+
+        // Hivatkozás megszerzése a MeteorlordAttack komponensre
     }
 
     // Amikor az objektum ütközik valamivel, ez a metódus hívódik meg
@@ -108,5 +110,5 @@ public class DamageHandler : MonoBehaviour
             healthBar.fillAmount = healthPercent;
         }
     }
+    public int GetMaxHealth() { return maxHealth; }
 }
-

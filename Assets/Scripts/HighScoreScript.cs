@@ -10,6 +10,14 @@ public class HighScoreSceneScript : MonoBehaviour
 
     void Start()
     {
+        if (!PlayerPrefs.HasKey("IsFirstLaunch"))
+        {
+            PlayerPrefs.SetInt("IsFirstLaunch", 1); // Az első indítást mentjük
+            PlayerPrefs.Save();
+
+            // High score reset
+            OnResetHighScoreButton();
+        }
         float highScore = PlayerPrefs.GetFloat("HighScore", 0f);
         int minutes = Mathf.FloorToInt(highScore / 60F);
         int seconds = Mathf.FloorToInt(highScore % 60F);

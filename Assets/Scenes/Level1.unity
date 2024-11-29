@@ -1243,7 +1243,7 @@ MonoBehaviour:
   - {fileID: 3983279733601087092, guid: d3b33863e1c40c54b8a7bd0c1c1ea2ee, type: 3}
   - {fileID: 988802161534412498, guid: 50114af46078ffe4792b8e8e867865b0, type: 3}
   meteorCounts: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-  enemyCounts: 0000000002000000
+  enemyCounts: 0000000000000000
   itemCount: 010000000100000001000000
   powerupCount: 3
   mapBoundaryObject: {fileID: 2143354310307350158}
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

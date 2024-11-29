@@ -17,7 +17,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(DisplayLevelName());
-        // Az aktuális szint neve megjelenik a játék indulásakor
+
+        // Hajó sprite frissítése
+        if (player != null)
+        {
+            ShipManager.Instance.SetPlayerSprite(player);
+        }
     }
 
     void Update()
@@ -62,7 +67,9 @@ public class GameManager : MonoBehaviour
             gameOverText.text = "Game Over";
         }
         yield return new WaitForSeconds(gameOverDelay); // Várakozás a Game Over után
+
         SceneManager.LoadScene("MainMenu"); // Vissza a főmenübe
+
     }
 
     IEnumerator StartWithDelay()
@@ -73,6 +80,9 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        ShipManager.Instance.AdvanceLevel();
+        ShipManager.Instance.SetPlayerSprite(player);
+
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {

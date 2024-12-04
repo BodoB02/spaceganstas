@@ -1,41 +1,52 @@
-#Game description
+# Projekt Dokumentáció
 
-Menü: Játék indítása
-Highscore
-Irányítás
-Kilépes a játékból
+## Labirintus
 
-Játékon belüli menü: Pause (esc)
-Menübe
+A labirintust manuálisan építettem fel Unity-ben a következő eszközökkel:
 
-Játékos:
-Mozgás: WASD
-Támadás: space lenyomva tartva folyamatosan lő
-**Akár űrhajó szín választás
-Akár űrhajó kinézet változás**
+- **Map**: A falak a játék elején kerülnek generálásra a **"MapBoundary"** prefab segítségével, amely tárolja a pályát körülvevő vonalat, amin nem lehet áthaladni. A generálásért a **Movement.cs** script felel.
 
-Világ: 3+1 különböző map, az utolsó a final boss map
-Minden mapon össze kell gyűjteni különböző alkatrészeket, ha egy pályán összegyűlt az összes alkatrész akkor tudsz a következő pályára tovább lépni
-Játékosra fixált kamera, bejárható pálya + minimap
-Pénzt és alkatrészt automatikusan felszedi
-Aszteroida mező
+- **Prefabok**:
+  - **Játékos**:
+    - Player
+  - **Ellenségek**:
+    - EnemyType1
+    - EnemyType2
+    - Főellenség: **MeteorLord**
+  - **Tárgyak**:
+    - PowerUps
+    - Meteors
+    - Laser
+    - Items (ShipParts)
+  - **Egyéb**:
+    - ShipManager
+    - GameTimer
+    - ObjectSpawner
+    - GameManager
+    - PauseCanvas
+    - Main Camera
 
-High score rendszer: A játékos high scoreja lényegében a játék teljesítéséhez szükséges idő. Minél kevesebb annál jobb.
+### Elérési út
 
-Játékmenet:
+- A labirintus elérhető a következő jelenetben:  
+  **`Assets/Scenes/Level1.unity`**
+  **`Assets/Scenes/Level2.unity`**
+  **`Assets/Scenes/Level3.unity`**
+  **`Assets/Scenes/Level4.unity`**
+- A labirintus generálásához használt script:  
+  **`Assets/Scripts/Movement.cs`**
 
-Anyahajó kitesz az űrben, ellenségekkel küzdve meg kell szerezni a pályán elszórt alkatrészeket.
+### Használt Assetek
 
-    Első pálya: Aszteroidákat kerülgetve kell megszerezni az alkatrészeket
+#### Textúrák
 
-_story_ Az anyahajó elvisz egy másik galaxisba
+- A labirintushoz és az objektumokhoz szükséges textúrák az alábbi helyen találhatók:  
+  \*\*`Assets/Scenes/PNGs
 
-    Második pálya: 3 erősebb ellenséget kell megölni akiknél vannak az itemek
+### Tesztelés
 
-_story_ Az ellenség bázisába behatoltatok
-
-    Harmadik pálya: Az ellenség bázisán kell megszerezni az itemeket
-
-_story_ Jön a főboss
-
-    Negyedik pálya: a fejlesztett űrhajóval kell legyőzni a főbosst, bossnak különböző támadásai vannak
+- A játékos navigálhat a labirintusban, és interakcióba léphet:
+  - Ellenségekkel (Enemy type 1, type 2, MeteorLord)
+  - Tárgyakkal (PowerUps, Meteors, Laser, ShipParts).
+- Az összes használt asset dokumentált és elérhető a **Project** fülben.
+- A tesztelési környezet: Unity Editor (verzió: [2022.3.45f1 <DX11>]).

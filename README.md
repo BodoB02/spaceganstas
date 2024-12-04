@@ -4,7 +4,7 @@
 
 A labirintust manuálisan építettem fel Unity-ben a következő eszközökkel:
 
-- **Map**: A falak a játék elején kerülnek generálásra a **"MapBoundary"** prefab segítségével, amely tárolja a pályát körülvevő vonalat, amin nem lehet áthaladni. A generálásért a **Movement.cs** script felel.
+- **Map**: A falak a játék elején kerülnek generálásra a **"MapBoundry"** prefab segítségével, amely tárolja a pályát körülvevő vonalat, amin nem lehet áthaladni. A generálásért a **PlayerMovement.cs** script felel.
 
 - **Prefabok**:
   - **Játékos**:
@@ -34,14 +34,14 @@ A labirintust manuálisan építettem fel Unity-ben a következő eszközökkel:
   **`Assets/Scenes/Level3.unity`**
   **`Assets/Scenes/Level4.unity`**
 - A labirintus generálásához használt script:  
-  **`Assets/Scripts/Movement.cs`**
+  **`Assets/Scripts/PlayerMovement.cs`**
 
 ### Használt Assetek
 
 #### Textúrák
 
 - A labirintushoz és az objektumokhoz szükséges textúrák az alábbi helyen találhatók:  
-  \*\*`Assets/Scenes/PNGs
+  **`Assets/Scenes/Pictures`**
 
 ### Tesztelés
 

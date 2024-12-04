@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyText: {fileID: 1907858250}
-  scrollSpeed: 100
+  scrollSpeed: 40
 --- !u!4 &1235268294
 Transform:
   m_ObjectHideFlags: 0

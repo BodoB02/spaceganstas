@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7735135250151279659}
   m_Layer: 10
   m_Name: PlayerLaser
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560955c6d17a3744282576f5c1243657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnPeriod: 0
   health: 1
+  healthBar: {fileID: 0}
 --- !u!60 &378409797875451112
 PolygonCollider2D:
   m_ObjectHideFlags: 0

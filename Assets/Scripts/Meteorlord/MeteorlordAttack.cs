@@ -92,9 +92,9 @@ public class MeteorlordAttack : MonoBehaviour
 
         if (currentHealthRatio <= 0.35f)
         {
-            dashSpeed = 6f;
+            dashSpeed = 5f;
             dashCooldown = 5f;
-            meteorForce = 10f;
+            meteorForce = 8f;
             numberOfMeteors = 6;
             meteorAngleSpread = 60f;
         }

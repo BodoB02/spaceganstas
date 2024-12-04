@@ -86,7 +86,7 @@ public class MeteorLordDefense : MonoBehaviour
 
         if (currentHealthRatio <= 0.35f)
         {
-            StartCoroutine(HandlePhaseChange(100f, 5f, 10));
+            StartCoroutine(HandlePhaseChange(100f, 5f, 7));
             if (!isPulsating)
             {
                 StartCoroutine(PulsateRadius());
@@ -94,7 +94,7 @@ public class MeteorLordDefense : MonoBehaviour
         }
         else if (currentHealthRatio <= 0.6f)
         {
-            StartCoroutine(HandlePhaseChange(50f, 10f, 7));
+            StartCoroutine(HandlePhaseChange(50f, 10f, 6));
         }
         else
         {

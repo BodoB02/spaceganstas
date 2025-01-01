@@ -13,6 +13,7 @@ public class MeteorLordDefense : MonoBehaviour
     private List<GameObject> defenseMeteors;
     private Collider2D meteorLordCollider;
     private DamageHandler damageHandler; // Hivatkozás a DamageHandler komponensre
+    private List<float> meteorAngles; // Meteoritok forgási szögei
     private bool isPulsating = false;
 
     void Start()
@@ -24,25 +25,29 @@ public class MeteorLordDefense : MonoBehaviour
 
     void Update()
     {
-        RotateDefenseMeteors();
-        UpdateBossStrength();
+        if (!isPulsating)
+        {
+            RotateDefenseMeteors();
+        }
         UpdateBossStrength();
     }
 
     void SpawnDefenseMeteors()
     {
-        ClearDefenseMeteors(); // Korábbi meteoritok törlése
+        ClearDefenseMeteors();
 
         defenseMeteors = new List<GameObject>();
+        meteorAngles = new List<float>(); // Szögek inicializálása
+
         for (int i = 0; i < numberOfDefenseMeteors; i++)
         {
             float angle = i * Mathf.PI * 2 / numberOfDefenseMeteors;
+            meteorAngles.Add(angle); // Szög tárolása
             Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * rotationRadius;
             Vector3 spawnPosition = transform.position + offset;
             GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
             meteor.transform.parent = transform;
 
-            // Ignore collision between meteors and MeteorLord
             Collider2D meteorCollider = meteor.GetComponent<Collider2D>();
             if (meteorCollider != null && meteorLordCollider != null)
             {
@@ -65,6 +70,7 @@ public class MeteorLordDefense : MonoBehaviour
             }
         }
         defenseMeteors.Clear();
+        meteorAngles.Clear();
     }
 
     void RotateDefenseMeteors()
@@ -73,7 +79,12 @@ public class MeteorLordDefense : MonoBehaviour
         {
             if (defenseMeteors[i] != null)
             {
-                defenseMeteors[i].transform.RotateAround(transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+                // Forgási szög frissítése
+                meteorAngles[i] += rotationSpeed * Mathf.Deg2Rad * Time.deltaTime;
+
+                // Új pozíció számítása
+                Vector3 offset = new Vector3(Mathf.Cos(meteorAngles[i]), Mathf.Sin(meteorAngles[i]), 0) * rotationRadius;
+                defenseMeteors[i].transform.position = transform.position + offset;
             }
         }
     }
@@ -102,23 +113,10 @@ public class MeteorLordDefense : MonoBehaviour
         }
     }
 
-    IEnumerator HandlePhaseChange(float newRotationSpeed, float newRespawnDelay, int newNumberOfDefenseMeteors)
-    {
-        yield return new WaitForSeconds(2f); // Wait for 2 seconds
-
-        rotationSpeed = newRotationSpeed;
-        respawnDelay = newRespawnDelay;
-        if (numberOfDefenseMeteors != newNumberOfDefenseMeteors)
-        {
-            numberOfDefenseMeteors = newNumberOfDefenseMeteors;
-            SpawnDefenseMeteors();
-        }
-
-    }
-
     IEnumerator PulsateRadius()
     {
         isPulsating = true;
+
         while (damageHandler.health <= damageHandler.GetMaxHealth() * 0.35f)
         {
             float originalRadius = rotationRadius;
@@ -147,7 +145,7 @@ public class MeteorLordDefense : MonoBehaviour
             }
             rotationRadius = originalRadius;
 
-            yield return new WaitForSeconds(1f); // Várakozás a következő pulzálás előtt
+            yield return new WaitForSeconds(1f);
         }
         isPulsating = false;
     }
@@ -158,10 +156,22 @@ public class MeteorLordDefense : MonoBehaviour
         {
             if (defenseMeteors[i] != null)
             {
-                float angle = i * Mathf.PI * 2 / numberOfDefenseMeteors;
-                Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * rotationRadius;
+                Vector3 offset = new Vector3(Mathf.Cos(meteorAngles[i]), Mathf.Sin(meteorAngles[i]), 0) * rotationRadius;
                 defenseMeteors[i].transform.position = transform.position + offset;
             }
         }
+    }
+    IEnumerator HandlePhaseChange(float newRotationSpeed, float newRespawnDelay, int newNumberOfDefenseMeteors)
+    {
+        yield return new WaitForSeconds(2f);
+
+        rotationSpeed = newRotationSpeed;
+        respawnDelay = newRespawnDelay;
+        if (numberOfDefenseMeteors != newNumberOfDefenseMeteors)
+        {
+            numberOfDefenseMeteors = newNumberOfDefenseMeteors;
+            SpawnDefenseMeteors();
+        }
+
     }
 }

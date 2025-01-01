@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invulnPeriod: 0
-  health: 100
+  health: 60
   healthBar: {fileID: 6654691418691945641}
 --- !u!1 &5673142438742478183
 GameObject:

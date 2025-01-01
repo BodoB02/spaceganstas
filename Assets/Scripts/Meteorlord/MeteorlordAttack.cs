@@ -14,6 +14,7 @@ public class MeteorlordAttack : MonoBehaviour
     public int numberOfMeteors = 4; // A kilőtt meteorok száma
     public float meteorAngleSpread = 85f; // Szög, amelyen belül kilőjük a meteorokat
     private bool initialDelayPassed = false; // Jelzi, hogy a kezdeti késleltetés lejárt-e
+    private bool isMeteorShowerActive = false; //Jelzi hogy aktív a meteorshower funkció
 
     private DamageHandler damageHandler; // Hivatkozás a DamageHandler komponensre
 
@@ -44,6 +45,9 @@ public class MeteorlordAttack : MonoBehaviour
 
     void MeteorShower()
     {
+        if (isMeteorShowerActive) return; // Elkerüli a párhuzamos futást
+        isMeteorShowerActive = true;
+
         for (int i = 0; i < numberOfMeteors; i++)
         {
             Vector3 offset = new Vector3(0, 0.5f, 0);
@@ -52,18 +56,17 @@ public class MeteorlordAttack : MonoBehaviour
             Rigidbody2D rb = meteor.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                // Beállítjuk, hogy a meteor ne ütközzön a Meteorlorddal
                 Physics2D.IgnoreCollision(meteor.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
-                // Több különböző irányban lövünk meteort
-                float angle = -meteorAngleSpread * (numberOfMeteors - 1) / 2 + i * meteorAngleSpread; // Szétszórjuk a meteorokat
+                float angle = -meteorAngleSpread * (numberOfMeteors - 1) / 2 + i * meteorAngleSpread;
                 Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.up;
-                rb.velocity = direction * meteorForce; // Beállítjuk a meteor sebességét közvetlenül
+                rb.velocity = direction * meteorForce;
             }
 
-            // Megsemmisítjük a meteort 5 másodperc múlva
             Destroy(meteor, 5f);
         }
+
+        StartCoroutine(MeteorShowerRoutine());
     }
 
     IEnumerator DashTowardsPlayer()
@@ -110,9 +113,17 @@ public class MeteorlordAttack : MonoBehaviour
         {
             dashSpeed = 4f;
             dashCooldown = 7f;
-            meteorForce = 0f;
-            numberOfMeteors = 0;
-            meteorAngleSpread = 90f;
+            meteorForce = 4f;
+            numberOfMeteors = 3;
+            meteorAngleSpread = 120f;
         }
+    }
+    IEnumerator MeteorShowerRoutine()
+    {
+        for (int i = 0; i < numberOfMeteors; i++)
+        {
+            yield return new WaitForSeconds(0.2f); // Késleltetés a meteorok között
+        }
+        isMeteorShowerActive = false; // Itt állítjuk vissza false-ra
     }
 }

@@ -88,6 +88,10 @@ public class ShipManager : MonoBehaviour
     {
         currentLevel = 1; // Visszaállítjuk az alap szintet
     }
+    public SpaceShip GetDefaultSpaceship() //Alapértelmezett űrhajó beállítása
+    {
+        return spaceShips.Find(ship => ship.shipName == "GreenShip");
+    }
 
     // Hajó kiválasztása a név alapján
     public void SelectSpaceShip(string shipName)
@@ -107,14 +111,13 @@ public class ShipManager : MonoBehaviour
             return selectedSpaceShip.upgrades[currentLevel - 1];
         }
 
-        Debug.LogError("Invalid level or spaceship data!");
-        return null;
+        return GetDefaultSpaceship().upgrades[currentLevel - 1];
     }
 
     // Szint előreléptetése
     public void AdvanceLevel()
     {
-        if (currentLevel < selectedSpaceShip.upgrades.Count)
+        if ((currentLevel < selectedSpaceShip.upgrades.Count) || (currentLevel < GetDefaultSpaceship().upgrades.Count))
         {
             currentLevel++;
         }

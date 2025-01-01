@@ -17,9 +17,19 @@ public class MeteorLordMovement : MonoBehaviour
     private bool hasShakenAt100 = false; // Jelzi, hogy a rázkódás már megtörtént 100%-nál
     private bool hasShakenAt60 = false; // Jelzi, hogy a rázkódás már megtörtént 60%-nál
     private bool hasShakenAt35 = false; // Jelzi, hogy a rázkódás már megtörtént 35%-nál
+    [Header("Audio Settings")]
+    public AudioClip damageSound; // Egyetlen hangfájl minden életerőszinthez
+    private AudioSource audioSource;
+    private bool isAudioPlaying = false;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         damageHandler = GetComponent<DamageHandler>(); // Hivatkozás megszerzése a DamageHandler komponensre
         originalLayer = gameObject.layer; // Eredeti layer eltárolása
 
@@ -56,7 +66,13 @@ public class MeteorLordMovement : MonoBehaviour
             FollowPlayer();
             ClampPositionWithinBounds();
         }
-        else { gameObject.layer = 11; }
+        else if (!isAudioPlaying && isShaking)
+        {
+            audioSource.PlayOneShot(damageSound, 0.2f);
+            gameObject.layer = 11;
+
+            StartCoroutine(ResetAudioState());
+        }
         UpdateBossStrength();
     }
 
@@ -134,5 +150,11 @@ public class MeteorLordMovement : MonoBehaviour
         transform.position = originalPosition; // Visszaállítás az eredeti pozícióra
         gameObject.layer = originalLayer; // Visszaállítás az eredeti rétegre
         isShaking = false;
+    }
+    IEnumerator ResetAudioState()
+    {
+        isAudioPlaying = true;
+        yield return new WaitForSeconds(damageSound.length); // Megvárja a hang lejátszását
+        isAudioPlaying = false;
     }
 }

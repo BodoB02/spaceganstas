@@ -20,11 +20,22 @@ public class PlayerShooting : MonoBehaviour
     // Lövés közötti idő számlálója
     float cooldownTimer = 0;
 
+    public AudioClip shootSound;
+    public float shootSoundVolume = 0.25f;
+    // AudioSource komponens referenciája
+    private AudioSource audioSource;
+
     // A script kezdeti inicializálása
     void Start()
     {
         // A lövedék rétegének beállítása a játékos objektum rétegére
         BulletLayer = gameObject.layer;
+        // Ellenőrizd, hogy van-e AudioSource komponens, ha nem, add hozzá
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.volume = 0.5f;
     }
 
     // Minden frame-ben meghívódó metódus, amely kezeli a lövést
@@ -50,6 +61,12 @@ public class PlayerShooting : MonoBehaviour
 
             // A lövedék rétegének beállítása a játékos rétegére
             bulletGo.layer = BulletLayer;
+
+            // Lövés hang lejátszása
+            if (shootSound != null)
+            {
+                audioSource.PlayOneShot(shootSound, shootSoundVolume);
+            }
         }
     }
 }

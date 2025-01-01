@@ -15,11 +15,17 @@ public class MeteorlordAttack : MonoBehaviour
     public float meteorAngleSpread = 85f; // Szög, amelyen belül kilőjük a meteorokat
     private bool initialDelayPassed = false; // Jelzi, hogy a kezdeti késleltetés lejárt-e
     private bool isMeteorShowerActive = false; //Jelzi hogy aktív a meteorshower funkció
-
     private DamageHandler damageHandler; // Hivatkozás a DamageHandler komponensre
+    public AudioClip meteorShowerSound; // Amikor indul a shower elindul a hangfájl
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         damageHandler = GetComponent<DamageHandler>(); // Hivatkozás megszerzése a DamageHandler komponensre
         StartCoroutine(WaitBeforeAction()); // Késleltetés a boss számára a spawnolás után
     }
@@ -47,6 +53,8 @@ public class MeteorlordAttack : MonoBehaviour
     {
         if (isMeteorShowerActive) return; // Elkerüli a párhuzamos futást
         isMeteorShowerActive = true;
+
+        audioSource.PlayOneShot(meteorShowerSound, 0.2f); //Shake hang lejátszása
 
         for (int i = 0; i < numberOfMeteors; i++)
         {

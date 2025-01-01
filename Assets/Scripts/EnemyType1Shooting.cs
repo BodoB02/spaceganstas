@@ -10,9 +10,16 @@ public class EnemyShootingType1 : MonoBehaviour
     float cooldownTimer = 0;
     int BulletLayer;
     EnemyFacesPlayer facesPlayer; // Referencia a FacesPlayer szkriptre
+    public AudioClip shootSound; // Lövés hangfájl
+    public float shootSoundVolume = 0.25f;  // AudioSource komponens referenciája
+    private AudioSource audioSource;
 
     void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         BulletLayer = gameObject.layer;
         facesPlayer = GetComponent<EnemyFacesPlayer>(); // Hivatkozás megszerzése
     }
@@ -30,6 +37,10 @@ public class EnemyShootingType1 : MonoBehaviour
 
             GameObject bulletGo = Instantiate(bulletPrefab, transform.position + offset, transform.rotation);
             bulletGo.layer = BulletLayer;
+            if (shootSound != null)
+            {
+                audioSource.PlayOneShot(shootSound, shootSoundVolume);
+            }
         }
     }
 }

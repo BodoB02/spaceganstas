@@ -12,9 +12,15 @@ public class EnemyShootingType2 : MonoBehaviour
     private float cooldownTimer = 0;
     private int BulletLayer;
     private EnemyFacesPlayer facesPlayer;
-
+    public AudioClip shootSound; // Lövés hangfájl
+    public float shootSoundVolume = 0.25f;  // AudioSource komponens referenciája
+    private AudioSource audioSource;
     void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         BulletLayer = gameObject.layer;
         facesPlayer = GetComponent<EnemyFacesPlayer>();
 
@@ -44,6 +50,10 @@ public class EnemyShootingType2 : MonoBehaviour
 
             GameObject bulletGo = Instantiate(bulletPrefab, transform.position + offset, transform.rotation);
             bulletGo.layer = BulletLayer;
+            if (shootSound != null)
+            {
+                audioSource.PlayOneShot(shootSound, shootSoundVolume);
+            }
         }
     }
 

@@ -10,14 +10,14 @@ public class HighScoreSceneScript : MonoBehaviour
 
     void Start()
     {
-        if (!PlayerPrefs.HasKey("IsFirstLaunch"))
+        /*if (!PlayerPrefs.HasKey("IsFirstLaunch"))
         {
             PlayerPrefs.SetInt("IsFirstLaunch", 1); // Az első indítást mentjük
             PlayerPrefs.Save();
 
             // High score reset
             OnResetHighScoreButton();
-        }
+        }*/
         float highScore = PlayerPrefs.GetFloat("HighScore", 0f);
         int minutes = Mathf.FloorToInt(highScore / 60F);
         int seconds = Mathf.FloorToInt(highScore % 60F);
@@ -33,8 +33,8 @@ public class HighScoreSceneScript : MonoBehaviour
     // High Score reset gomb kezelése
     public void OnResetHighScoreButton()
     {
-        PlayerPrefs.SetFloat("HighScore", 0f); // High score törlése nullára állítva
+        PlayerPrefs.DeleteKey("HighScore"); // High score törlése nullára állítva
         PlayerPrefs.Save(); // High score törlése
-        highScoreText.text = "High Score: 00:00"; // Megjelenítés frissítése
+        highScoreText.text = "High Score: --:--"; // Megjelenítés frissítése
     }
 }

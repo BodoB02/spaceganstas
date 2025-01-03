@@ -624,9 +624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invulnPeriod: 0
-  health: 10
+  health: 60
   healthBar: {fileID: 6654691418691945641}
-  getDamagedSound: {fileID: 8300000, guid: a3058ec839d184548baca4ded31d267d, type: 3}
+  getDamagedSound: {fileID: 0}
   powerUpSound: {fileID: 0}
   itemSound: {fileID: 0}
   gameOverSoundVolume: 0.5

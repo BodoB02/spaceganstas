@@ -937,6 +937,10 @@ MonoBehaviour:
   shipDestroySoundVolume: 1
   powerUpSoundVolume: 0.7
   itemSoundVolume: 1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  healthColor: {r: 0, g: 1, b: 0, a: 1}
+  flashDuration: 0.1
+  explosionPrefab: {fileID: 0}
 --- !u!114 &3721413728352328578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1204,7 @@ MonoBehaviour:
   - {fileID: 3983279733601087092, guid: d3b33863e1c40c54b8a7bd0c1c1ea2ee, type: 3}
   - {fileID: 988802161534412498, guid: 50114af46078ffe4792b8e8e867865b0, type: 3}
   meteorCounts: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-  enemyCounts: 0000000002000000
+  enemyCounts: 0100000002000000
   itemCount: 010000000100000001000000
   powerupCount: 3
   mapBoundaryObject: {fileID: 5535880490144986783}

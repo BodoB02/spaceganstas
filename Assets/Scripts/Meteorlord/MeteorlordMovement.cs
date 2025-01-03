@@ -69,8 +69,6 @@ public class MeteorLordMovement : MonoBehaviour
         else if (!isAudioPlaying && isShaking)
         {
             audioSource.PlayOneShot(damageSound, 0.2f);
-            gameObject.layer = 11;
-
             StartCoroutine(ResetAudioState());
         }
         UpdateBossStrength();
@@ -139,6 +137,7 @@ public class MeteorLordMovement : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < shakeDuration)
         {
+            gameObject.layer = 11;
             float offsetX = Random.Range(-1f, 1f) * shakeMagnitude;
             float offsetY = Random.Range(-1f, 1f) * shakeMagnitude;
             transform.position = new Vector3(originalPosition.x + offsetX, originalPosition.y + offsetY, originalPosition.z);

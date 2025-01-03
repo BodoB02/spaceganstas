@@ -32,9 +32,23 @@ public class DamageHandler : MonoBehaviour
     public float shipDestroySoundVolume = 1f;
     public float powerUpSoundVolume = 0.7f;
     public float itemSoundVolume = 1f;
+    [Header("Damage Effect Settings")]
+    public Color damageColor = Color.red; // A szín, amire vált sebzéskor
+    public Color healthColor = Color.green; // A szín, amire vált sebzéskor
+    public float flashDuration = 0.1f;    // Mennyi ideig tartson a színváltás
+    private Color originalColor;          // Az eredeti szín
+    private SpriteRenderer spriteRenderer;
+    [Header("Explosion Settings")]
+    public GameObject explosionPrefab; // A robbanáseffekt prefabja
+
     // A Start metódus meghívásakor történik meg a szükséges inicializálás
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
         // Eltároljuk az eredeti réteget, amelyen az objektum található
         correctLayer = gameObject.layer;
 
@@ -68,6 +82,10 @@ public class DamageHandler : MonoBehaviour
             }
             // Frissítjük a HP csíkot
             UpdateHealthBar();
+            if (spriteRenderer != null)
+            {
+                StartCoroutine(FlashHealthColor());
+            }
             // Játsszuk le a PowerUp hangot
             PlayPowerUpSound();
             // Megsemmisítjük a felvett tárgyat
@@ -79,6 +97,11 @@ public class DamageHandler : MonoBehaviour
             if (gameObject.layer == 10)
             {
                 PlayDamageSound();
+            }
+            // Sebzés effekt indítása
+            if (spriteRenderer != null)
+            {
+                StartCoroutine(FlashEffect());
             }
             // Csökkentjük az életerőt
             health--;
@@ -118,6 +141,10 @@ public class DamageHandler : MonoBehaviour
     {
         if (CompareTag("Player") && AudioManager.Instance != null) { AudioManager.Instance.PlayGameOverSound(); }
         if (CompareTag("Enemy") && AudioManager.Instance != null) { AudioManager.Instance.PlayShipDestroySound(); }
+        if (CompareTag("Enemy") && (explosionPrefab != null))
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
         // Megsemmisítjük az objektumot
         Destroy(gameObject);
     }
@@ -155,5 +182,17 @@ public class DamageHandler : MonoBehaviour
         {
             audioSource.PlayOneShot(itemSound, itemSoundVolume);
         }
+    }
+    private IEnumerator FlashEffect()
+    {
+        spriteRenderer.color = damageColor;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.color = originalColor;
+    }
+    private IEnumerator FlashHealthColor()
+    {
+        spriteRenderer.color = healthColor;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.color = originalColor;
     }
 }

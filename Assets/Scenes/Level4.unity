@@ -949,6 +949,10 @@ MonoBehaviour:
   shipDestroySoundVolume: 1
   powerUpSoundVolume: 0.7
   itemSoundVolume: 1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  healthColor: {r: 0, g: 1, b: 0, a: 1}
+  flashDuration: 0.1
+  explosionPrefab: {fileID: 0}
 --- !u!114 &3721413728995373391
 MonoBehaviour:
   m_ObjectHideFlags: 0

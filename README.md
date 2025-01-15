@@ -7,13 +7,13 @@
 **Letöltés**
 
 - Látogass el a GitHub release oldalára:GitHub Release Link
-- Töltsd le a futtatható fájlt a "Assets" részből ((xxxx).zip).
+- Töltsd le a futtatható fájlt a "Assets" részből (SpaceGangsta_v1.2.zip).
 - Csomagold ki a .zip fájlt egy tetszőleges mappába.
 
 **Indítás**
 
 - Nyisd meg a kicsomagolt mappát.
-- Indítsd el a játékot a SpaceGangsta.exe fájlra kattintva (Windows esetén).
+- Indítsd el a játékot a My Project.exe fájlra kattintva (Windows esetén).
 
 ## Fordítás Unity-ben
 
